@@ -1,0 +1,137 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Egg Production Management{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <!-- Page Header -->
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+
+        <div>
+            <h2 class="fw-bold mb-1">
+                🥚 Egg Production Management
+            </h2>
+
+            <p class="text-muted mb-0">
+                Manage daily egg collection and production records
+            </p>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2">
+
+            
+
+            <a href="{% url 'add_production' %}"
+               class="btn btn-success">
+                + Add Production
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Production Records Card -->
+    <div class="card shadow-sm mb-4">
+
+        <div class="card-header bg-success text-white">
+            <h5 class="mb-0">
+                🥚 Egg Production Records
+            </h5>
+        </div>
+
+        <div class="card-body">
+
+            <p class="text-muted small mb-3">
+                Total Records: {{ productions|length }}
+            </p>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped table-hover align-middle">
+
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Date</th>
+                            <th>Chicken Batch</th>
+                            <th>Collected Eggs</th>
+                            <th>Damaged Eggs</th>
+                            <th>Good Eggs</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for record in productions %}
+
+                        <tr>
+
+                            <td class="text-nowrap">
+                                {{ record.date|date:"M d, Y" }}
+                            </td>
+
+                            <td>
+                                <strong>
+                                    {{ record.batch.batch_name }}
+                                </strong>
+                            </td>
+
+                            <td>
+                                {{ record.eggs_collected }}
+                            </td>
+
+                            <td>
+                                {{ record.damaged_eggs }}
+                            </td>
+
+                            <td>
+                                <span class="badge bg-success">
+                                    {{ record.good_eggs }}
+                                </span>
+                            </td>
+
+                            <td>
+                                <div class="d-flex gap-2">
+
+                                    <a href="{% url 'edit_production' record.pk %}"
+                                       class="btn btn-warning btn-sm">
+                                        ✏️ Edit
+                                    </a>
+
+                                    <a href="{% url 'delete_production' record.pk %}"
+                                       class="btn btn-danger btn-sm">
+                                        🗑️ Delete
+                                    </a>
+
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        {% empty %}
+
+                        <tr>
+                            <td colspan="6"
+                                class="text-center py-4 text-muted">
+                                No production records yet.
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

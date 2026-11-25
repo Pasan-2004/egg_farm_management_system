@@ -1,0 +1,512 @@
+
+/* ========================================
+   SMART EGG FARM MANAGEMENT SYSTEM
+   Main Stylesheet
+======================================== */
+
+:root {
+    --sidebar-width: 280px;
+    --sidebar-bg: #204539;
+    --sidebar-hover: #306653;
+    --page-bg: #98edbb;
+    --card-bg: #dcece4;
+    --text-dark: #172b32;
+    --text-muted: #46616a;
+    --primary-green: #198754;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--page-bg);
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+/* ========================================
+   SIDEBAR
+======================================== */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    padding: 24px 14px;
+    background: var(--sidebar-bg);
+    color: #ffffff;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.sidebar h2,
+.sidebar h3,
+.sidebar h4 {
+    color: #ffffff;
+    font-weight: 700;
+    margin: 0 0 30px;
+    line-height: 1.3;
+}
+
+.sidebar a {
+    display: block;
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 14px;
+    color: #d9e7e0;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 500;
+    transition: background 0.2s ease;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background: var(--sidebar-hover);
+    color: #ffffff;
+}
+
+/* ========================================
+   LOGGED-IN USER & LOGOUT
+======================================== */
+
+.logout-section {
+    margin-top: auto;
+    padding-top: 22px;
+    padding-bottom: 12px;
+    width: 100%;
+}
+
+.logout-section p {
+    color: #ffffff;
+    font-size: 14px;
+    margin-bottom: 10px;
+    overflow-wrap: anywhere;
+}
+
+.logout-section form {
+    width: auto !important;
+    display: block;
+    margin: 0;
+}
+
+.logout-section .logout-btn {
+    display: inline-block !important;
+    width: auto !important;
+    min-width: 95px;
+    padding: 7px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 7px;
+    background: #dc3545;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.logout-section .logout-btn:hover {
+    background: #b52b39;
+}
+
+/* ========================================
+   MAIN CONTENT
+======================================== */
+
+.main-content {
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+    min-width: 0;
+    min-height: 100vh;
+    padding: 32px 36px;
+    background: var(--page-bg);
+}
+
+.main-content > * {
+    max-width: 100%;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.main-content h1,
+.main-content h2,
+.main-content h3,
+.main-content h4,
+.main-content h5 {
+    color: var(--text-dark);
+}
+
+.main-content h2 {
+    font-weight: 700;
+}
+
+.main-content .text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* ========================================
+   BOOTSTRAP GRID SUPPORT
+======================================== */
+
+.main-content .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: calc(-0.5 * var(--bs-gutter-x, 1.5rem));
+    margin-left: calc(-0.5 * var(--bs-gutter-x, 1.5rem));
+}
+
+.main-content .row > * {
+    min-width: 0;
+    max-width: 100%;
+    flex-shrink: 0;
+}
+
+/* ========================================
+   DASHBOARD CARDS
+======================================== */
+
+.stat-card {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    padding: 28px 30px;
+    border-radius: 18px;
+    background: var(--card-bg);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    overflow-wrap: break-word;
+}
+
+.stat-card h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+.stat-card h4,
+.stat-card h5 {
+    font-weight: 700;
+}
+
+.stat-card h6 {
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.stat-card p,
+.stat-card small {
+    line-height: 1.6;
+}
+
+.stat-card .fs-1 {
+    flex-shrink: 0;
+}
+
+/* ========================================
+   QUICK ACTIONS
+======================================== */
+
+.stat-card .btn {
+    border-radius: 8px;
+    font-weight: 500;
+    padding: 10px 16px;
+    white-space: normal;
+}
+
+.stat-card .d-flex {
+    min-width: 0;
+}
+
+.btn-success {
+    background-color: #198754;
+    border-color: #198754;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+/* ========================================
+   TABLES
+======================================== */
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 12px;
+}
+
+.table {
+    background: #ffffff;
+    margin-bottom: 0;
+}
+
+.table th {
+    background: #204539;
+    color: #ffffff;
+    padding: 14px;
+    white-space: nowrap;
+}
+
+.table td {
+    padding: 12px 14px;
+    vertical-align: middle;
+}
+
+.table tbody tr:hover {
+    background: #edf8f1;
+}
+
+/* ========================================
+   FORMS
+======================================== */
+
+.form-control,
+.form-select {
+    border-radius: 9px;
+    padding: 10px 12px;
+    border: 1px solid #c7d9cf;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.15);
+}
+
+label {
+    font-weight: 500;
+}
+
+button,
+.btn {
+    transition: all 0.2s ease;
+}
+
+/* ========================================
+   RESPONSIVE - TABLETS
+======================================== */
+
+@media (max-width: 991.98px) {
+
+    :root {
+        --sidebar-width: 230px;
+    }
+
+    .sidebar {
+        padding: 20px 10px;
+    }
+
+    .sidebar a {
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    .main-content {
+        padding: 24px;
+    }
+
+    .stat-card {
+        padding: 22px;
+    }
+}
+
+/* ========================================
+   RESPONSIVE - MOBILE
+======================================== */
+
+@media (max-width: 767.98px) {
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 18px;
+        gap: 4px;
+    }
+
+    .sidebar h2,
+    .sidebar h3,
+    .sidebar h4 {
+        margin-bottom: 12px;
+    }
+
+    .sidebar a {
+        padding: 10px 12px;
+        font-size: 15px;
+    }
+
+    .logout-section {
+        margin-top: 15px;
+        padding-top: 10px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 18px 14px;
+    }
+
+    .stat-card {
+        padding: 20px;
+        border-radius: 14px;
+    }
+
+    .stat-card h2 {
+        font-size: 30px;
+    }
+
+    .stat-card .btn {
+        font-size: 14px;
+    }
+}
+/* Sidebar text visibility */
+.sidebar h3,
+.sidebar .logout-section p {
+    color: #ffffff !important;
+}
+
+/* Sidebar logo */
+.sidebar h3 {
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 1.3;
+}
+/* User profile dropdown */
+
+.main-content .dropdown-menu {
+    min-width: 220px;
+    border: none;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.main-content .dropdown-item {
+    padding: 10px 12px;
+    border-radius: 8px;
+}
+
+.main-content .dropdown-item:hover {
+    background: #e6f5eb;
+}
+
+.main-content .card {
+    max-width: 750px;
+}
+
+.main-content .card input {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #c7d9cf;
+    border-radius: 8px;
+}
+
+/* Back to Dashboard Button */
+.back-dashboard-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.back-dashboard-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* ===================================
+   HEALTH MANAGEMENT - FULL WIDTH
+=================================== */
+
+.health-page {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 20px 24px !important;
+    box-sizing: border-box;
+}
+
+/* Search and Records Cards */
+.health-page .health-wide-card {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+/* Card Content */
+.health-page .card-body {
+    padding: 24px;
+}
+
+/* Search Input and Dropdown */
+.health-page .form-control,
+.health-page .form-select {
+    width: 100%;
+    min-height: 46px;
+    border-radius: 8px;
+}
+
+/* Health Records Table */
+.health-page .table-responsive {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.health-page .table {
+    width: 100%;
+    min-width: 1100px;
+    margin-bottom: 0;
+}
+
+.health-page .table th,
+.health-page .table td {
+    padding: 16px;
+    vertical-align: middle;
+}
+
+/* Responsive Mobile Layout */
+@media (max-width: 768px) {
+    .health-page {
+        padding: 12px !important;
+    }
+
+    .health-page .card-body {
+        padding: 14px;
+    }
+
+    .health-page .table {
+        min-width: 900px;
+    }
+}
