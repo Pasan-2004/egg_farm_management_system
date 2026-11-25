@@ -33,72 +33,86 @@
             🥚 Smart Egg Farm
         </h3>
 
-<nav>
+        <nav>
 
-    {% if user.is_authenticated %}
+            {% if user.is_authenticated %}
 
-        {% if user.is_staff %}
+                {% if user.is_staff %}
 
-            <!-- ADMIN NAVIGATION -->
+                    <!-- ADMIN NAVIGATION -->
 
-            <a href="{% url 'dashboard' %}"
-               class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
-                🏠 Dashboard
-            </a>
+                    <a href="{% url 'dashboard' %}"
+                       class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
+                        🏠 Dashboard
+                    </a>
 
-            <a href="{% url 'batch_list' %}"
-               class="{% if '/chickens/' in request.path %}active{% endif %}">
-                🐔 Chickens
-            </a>
+                    <a href="{% url 'batch_list' %}"
+                       class="{% if '/chickens/' in request.path %}active{% endif %}">
+                        🐔 Chickens
+                    </a>
 
-            <a href="{% url 'production_list' %}"
-               class="{% if '/production/' in request.path %}active{% endif %}">
-                🥚 Egg Production
-            </a>
+                    <a href="{% url 'production_list' %}"
+                       class="{% if '/production/' in request.path %}active{% endif %}">
+                        🥚 Egg Production
+                    </a>
 
-            <a href="{% url 'feed_list' %}"
-               class="{% if '/feed/' in request.path %}active{% endif %}">
-                🌾 Feed Management
-            </a>
+                    <a href="{% url 'feed_list' %}"
+                       class="{% if '/feed/' in request.path %}active{% endif %}">
+                        🌾 Feed Management
+                    </a>
 
-            <a href="{% url 'health_list' %}"
-               class="{% if '/health/' in request.path %}active{% endif %}">
-                🩺 Health Management
-            </a>
+                    <a href="{% url 'health_list' %}"
+                       class="{% if '/health/' in request.path %}active{% endif %}">
+                        🩺 Health Management
+                    </a>
 
-            <a href="{% url 'admin_orders' %}"
-               class="{% if request.resolver_match.url_name == 'admin_orders' %}active{% endif %}">
-                🛒 Customer Orders
-            </a>
+                    <a href="{% url 'admin_orders' %}"
+                       class="{% if request.resolver_match.url_name == 'admin_orders' %}active{% endif %}">
+                        🛒 Customer Orders
+                    </a>
 
-        {% else %}
+                    <!-- ADMIN NOTIFICATIONS -->
 
-            <!-- CUSTOMER NAVIGATION -->
+                    <a href="{% url 'notifications_list' %}"
+                       class="{% if request.resolver_match.url_name == 'notifications_list' %}active{% endif %}">
+                        🔔 Notifications
+                    </a>
 
-            <a href="{% url 'customer_dashboard' %}"
-               class="{% if request.resolver_match.url_name == 'customer_dashboard' %}active{% endif %}">
-                🏠 Dashboard
-            </a>
+                {% else %}
 
-            <a href="{% url 'place_order' %}"
-               class="{% if request.resolver_match.url_name == 'place_order' %}active{% endif %}">
-                🥚 Place Order
-            </a>
+                    <!-- CUSTOMER NAVIGATION -->
 
-            <a href="{% url 'my_orders' %}"
-               class="{% if request.resolver_match.url_name == 'my_orders' %}active{% endif %}">
-                📦 My Orders
-            </a>
+                    <a href="{% url 'customer_dashboard' %}"
+                       class="{% if request.resolver_match.url_name == 'customer_dashboard' %}active{% endif %}">
+                        🏠 Dashboard
+                    </a>
 
-        {% endif %}
+                    <a href="{% url 'place_order' %}"
+                       class="{% if request.resolver_match.url_name == 'place_order' %}active{% endif %}">
+                        🥚 Place Order
+                    </a>
 
-    {% endif %}
+                    <a href="{% url 'my_orders' %}"
+                       class="{% if request.resolver_match.url_name == 'my_orders' %}active{% endif %}">
+                        📦 My Orders
+                    </a>
 
-</nav>
+                    <!-- CUSTOMER NOTIFICATIONS -->
 
+                    <a href="{% url 'notifications_list' %}"
+                       class="{% if request.resolver_match.url_name == 'notifications_list' %}active{% endif %}">
+                        🔔 Notifications
+                    </a>
+
+                {% endif %}
+
+            {% endif %}
+
+        </nav>
 
         <!-- Sidebar Logout -->
         {% if user.is_authenticated %}
+
             <div class="logout-section">
 
                 <form method="post" action="{% url 'logout' %}">
@@ -112,6 +126,7 @@
                 </form>
 
             </div>
+
         {% endif %}
 
     </aside>
@@ -135,7 +150,9 @@
                         type="button"
                         data-bs-toggle="dropdown"
                         aria-expanded="false">
+
                         👤 {{ user.first_name|default:user.username }}
+
                     </button>
 
                     <ul class="dropdown-menu dropdown-menu-end shadow">
@@ -198,6 +215,7 @@
 
         <!-- Django Messages -->
         {% if messages %}
+
             {% for message in messages %}
 
                 <div class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show"
@@ -215,6 +233,7 @@
                 </div>
 
             {% endfor %}
+
         {% endif %}
 
         <!-- Back to Dashboard -->
@@ -223,6 +242,7 @@
             {% if user.is_staff %}
 
                 {% if request.resolver_match.url_name != 'dashboard' %}
+
                     <div class="mb-4">
 
                         <a href="{% url 'dashboard' %}"
@@ -231,15 +251,19 @@
                                   color: white;
                                   border-radius: 8px;
                                   padding: 10px 18px;">
+
                             ← Back to Dashboard
+
                         </a>
 
                     </div>
+
                 {% endif %}
 
             {% else %}
 
                 {% if request.resolver_match.url_name != 'customer_dashboard' %}
+
                     <div class="mb-4">
 
                         <a href="{% url 'customer_dashboard' %}"
@@ -248,10 +272,13 @@
                                   color: white;
                                   border-radius: 8px;
                                   padding: 10px 18px;">
+
                             ← Back to Dashboard
+
                         </a>
 
                     </div>
+
                 {% endif %}
 
             {% endif %}
